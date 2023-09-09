@@ -1,0 +1,20 @@
+name: Github Action Testing
+on: workflow_dispatch
+
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        id: python
+        with:
+          python-version: '3.11.5'
+          check-latest: false # Don't check for latest version of Python
+          cache: 'pip' # caching pip dependencies
+          cache-dependency-path: .github/requirements.txt
+      - run: echo '${{ steps.python.outputs.python-version }}'
+      - run: echo '${{ steps.python.outputs.python-path }} --version'
+      - run: echo '${{ steps.python.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
+      - run: pip install -r .github/requirements-dev.txt
