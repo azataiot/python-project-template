@@ -53,7 +53,7 @@ requirements: ensure-poetry
 ## Run pre-commit hooks
 pre-commit:
 	@echo "Running pre-commit..."
-	@SKIP=pyupgrade,bandit pre-commit run --all-files
+	@pre-commit run --all-files
 	@echo "Done!"
 
 
