@@ -38,6 +38,16 @@ ensure-dev-branch:
 
 
 
+# -- Dependency --
+## Export dependencies to requirements.txt
+requirements: ensure-poetry
+	@echo "Exporting dependencies to requirements.txt..."
+	@poetry export --only main -f requirements.txt --output requirements/requirements.txt --without-hashes
+	@poetry export --only dev -f requirements.txt --output requirements/dev-requirements.txt --without-hashes
+	@echo "Done!"
+
+
+
 # -- Git and Github --
 ## Run pre-commit hooks
 pre-commit:
