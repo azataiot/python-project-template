@@ -1,7 +1,7 @@
 # project-template
 
-<a href="https://github.com/azataiot/project-template/generate"><img src="https://img.shields.io/badge/use%20this-template-blue?logo=github" alt="use-this-repo-badge"></a>
-[![Code Quality](https://github.com/azataiot/project-template/actions/workflows/code-quality.yml/badge.svg)](https://github.com/azataiot/project-template/actions/workflows/code-quality.yml)
+<a href="https://github.com/azataiot/python-project-template/generate"><img src="https://img.shields.io/badge/use%20this-template-blue?logo=github" alt="use-this-repo-badge"></a>
+[![Code Quality](https://github.com/azataiot/python-project-template/actions/workflows/code-quality.yml/badge.svg)](https://github.com/azataiot/python-project-template/actions/workflows/code-quality.yml)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![latest release](https://img.shields.io/github/v/release/azataiot/project-template)](https://github.com/azataiot/project-template/releases)
 
