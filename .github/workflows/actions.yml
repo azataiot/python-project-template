@@ -32,7 +32,7 @@ jobs:
         shell: bash
 
       - name: Install pre-commit hooks
-        run: pre-commit install -c .github/.pre-commit-config.yaml
+        run: pre-commit install --config .github/.pre-commit-config.yaml
         shell: bash
 
       - name: Run pre-commit
