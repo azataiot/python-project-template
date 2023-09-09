@@ -27,19 +27,28 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip' # caching pip dependencies
+
       - name: Create a new branch for checks
         run: git checkout -b upgrade/$(date +'%Y%m%d%H%M%S')
 
       - name: Run pyupgrade using pre-commit
+        continue-on-error: true  # Continue even if pyupgrade finds issues
         uses: pre-commit/action@v3.0.0
         with:
           extra_args: pyupgrade --all-files
+
 
       - name: Run bandit using pre-commit
         continue-on-error: true  # Continue even if bandit finds issues
         uses: pre-commit/action@v3.0.0
         with:
           extra_args: bandit --all-files
+
 
       - name: Commit changes
         run: |
