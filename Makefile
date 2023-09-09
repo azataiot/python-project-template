@@ -129,3 +129,35 @@ version:
 	else \
 		echo "No version input provided. Version remains unchanged."; \
 	fi
+
+
+
+# -- Code Quality --
+
+## Clean Python cache files
+clean:
+	@echo "Cleaning Python cache files..."
+	@find . -type d -name "__pycache__" -exec rm -rf {} +
+	@find . -type f -name "*.pyc" -delete
+	@find . -type f -name "*.pyo" -delete
+	@echo "Done!"
+
+## Linting code (ruff, isort)
+lint: ensure-poetry
+	@echo "Linting code..."
+	@poetry run ruff check .
+	@poetry run black .
+	@poetry run isort .
+	@poetry run flake8 .
+	@echo "Done!"
+
+## Test code (pytest)
+test-py: ensure-poetry
+	@echo "Running pytest..."
+	@poetry run python -m pytest
+	@echo "Done!"
+
+
+## Test code (pytest+django)
+# we simply call pytest and some other test targets if you have
+test: ensure-poetry test-py
