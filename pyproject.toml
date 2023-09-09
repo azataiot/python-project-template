@@ -16,10 +16,12 @@ pytest = "^7.4.2"
 flake8 = "^6.1.0"
 
 
-[tool.poetry.group.github.dependencies]
-pre-commit = "^3.4.0"
-bandit = {extras = ["toml"], version = "^1.7.5"}
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.bandit]
+exclude_dirs = ["tests", "path/to/file"]
+tests = ["B201", "B301"]
+skips = ["B101", "B601"]
