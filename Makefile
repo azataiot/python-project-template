@@ -17,6 +17,11 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST) | sort -u
 
+
+# Check if poetry is installed
+ensure-poetry:
+	@command -v poetry >/dev/null 2>&1 || { echo >&2 "Poetry is not installed. Aborting."; exit 1; }
+
 # Check for uncommitted changes
 ensure-clean:
 	@if ! git diff-index --quiet HEAD -- || ! git diff --staged --quiet; then \
