@@ -68,7 +68,7 @@ Contributions are always welcome! Whether it's bug reports, feature requests, or
 
 ## License
 
-This project is licensed under the XYZ License. For more details, see [LICENSE](LICENSE).
+This project is licensed under some License. For more details, see [LICENSE](LICENSE.md).
 
 ## Code of Conduct
 
