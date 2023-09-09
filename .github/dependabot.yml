@@ -11,3 +11,12 @@ updates:
     target-branch: "update/github-actions"
     labels:
       - "update"
+  # update python packages
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "dev"
+    open-pull-requests-limit: 10
+    labels:
+      - "update"
