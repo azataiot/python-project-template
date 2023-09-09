@@ -17,8 +17,8 @@ jobs:
           check-latest: false # Don't check for latest version of Python
           cache: 'pip' # caching pip dependencies
           cache-dependency-path: .github/requirements.txt
-      - run: echo '${{ steps.python.outputs.python-path }} --version'
-      - run: echo '${{ steps.python.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
+      - run: echo '🐍 version :${{ steps.python.outputs.python-path }} --version'
+      - run: echo '📦 Cache hit :${{ steps.python.outputs.cache-hit }}' # true if cache-hit occurred on the primary key
 
 
       - name: Install pre-commit (if not already installed)
