@@ -30,3 +30,11 @@ jobs:
           python -m pip install pre-commit
           pre-commit --version
         shell: bash
+
+      - name: Install pre-commit hooks
+        run: pre-commit install
+        shell: bash
+
+      - name: Run pre-commit
+        run: pre-commit run --all-files
+        shell: bash
