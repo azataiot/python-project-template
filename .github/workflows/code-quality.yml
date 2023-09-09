@@ -1,0 +1,22 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches: [ 'main', 'dev' ]
+    types:
+      - opened
+      - synchronize
+  push:
+    branches: [ 'dev' ]
+  workflow_dispatch:
+    if: github.actor != 'dependabot[bot]'
+
+permissions:
+  contents: read
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pre-commit/action@v3.0.0

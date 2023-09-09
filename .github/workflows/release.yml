@@ -1,0 +1,33 @@
+name: Automatic Release
+
+on:
+  pull_request:
+    branches: [ 'main' ]
+    types:
+      - closed
+      - synchronize
+  workflow_dispatch:
+
+jobs:
+  release:
+    env:
+      GH_TOKEN: ${{ github.token }}
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version from .VERSION file
+        id: get_version
+        run: echo "version=$(cat .VERSION)" >> $GITHUB_ENV
+
+      - name: Create GitHub Release with auto-generated notes
+        run: |
+          gh release create $version \
+            --title "Release $version" \
+            --generate-notes
