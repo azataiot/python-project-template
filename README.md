@@ -3,6 +3,7 @@
 <a href="https://github.com/azataiot/python-project-template/generate"><img src="https://img.shields.io/badge/use%20this-template-blue?logo=github" alt="use-this-repo-badge"></a>
 [![Code Quality](https://github.com/azataiot/python-project-template/actions/workflows/code-quality.yml/badge.svg)](https://github.com/azataiot/python-project-template/actions/workflows/code-quality.yml)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![latest release](https://img.shields.io/github/v/release/azataiot/project-template)](https://github.com/azataiot/project-template/releases)
 
 **Introduction**: This repository provides a comprehensive project template for GitHub repositories. It's designed to streamline the setup process, ensuring best practices and essential components are included. By using this template, you can ensure a consistent and professional structure for your projects, making them more accessible and maintainable.
