@@ -33,6 +33,10 @@ jobs:
           python-version: '3.11'
           cache: 'pip' # caching pip dependencies
 
+      - name: Install pre-commit
+        run: |
+          pip install poetry
+
       - name: Create a new branch for checks
         run: git checkout -b upgrade/$(date +'%Y%m%d%H%M%S')
 
