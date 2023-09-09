@@ -22,7 +22,7 @@ jobs:
           path: |
             ~/.cache/pre-commit
             ~/.cache/pip
-          key: ${{ runner.os }}-pre-commit-upgrade-security${{ hashFiles('.github/pre-commit-config.yaml') }}
+          key: ${{ runner.os }}-pre-commit-upgrade-security-${{ hashFiles('.github/pre-commit-config.yaml') }}
 
       - name: Install pre-commit
         run: |
