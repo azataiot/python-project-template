@@ -22,7 +22,7 @@ jobs:
           path: |
             ~/.cache/pre-commit
             ~/.cache/pip
-          key: ${{ runner.os }}-pre-commit-additional-${{ hashFiles('**/.github/.pre-commit-config.yaml') }}
+          key: ${{ runner.os }}-pre-commit-additional-${{ hashFiles('**/.github/.pre-commit-config.yaml') }}-${{ hashFiles('**/.github/workflows/actions.yml') }}
 
       - name: Install pre-commit
         run: |
@@ -32,7 +32,7 @@ jobs:
         shell: bash
 
       - name: Install pre-commit hooks
-        run: pre-commit install
+        run: pre-commit install -c .github/.pre-commit-config.yaml
         shell: bash
 
       - name: Run pre-commit
