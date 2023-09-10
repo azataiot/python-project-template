@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-project-template-poetry"
-version = "0.1.0.dev5"
+version = "0.1.0.dev6"
 description = "A project template to use for new Python Github repositories with best practices."
 authors = ["Azat <8280770+azataiot@users.noreply.github.com>"]
 readme = "README.md"
