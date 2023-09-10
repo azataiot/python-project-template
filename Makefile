@@ -44,7 +44,6 @@ requirements: ensure-poetry
 	@echo "Exporting dependencies to requirements.txt..."
 	@poetry export --only main -f requirements.txt --output requirements/requirements.txt --without-hashes
 	@poetry export --only dev -f requirements.txt --output requirements/dev-requirements.txt --without-hashes
-	@poetry export --only github -f requirements.txt --output .github/requirements.txt --without-hashes
 	@echo "Done!"
 
 
