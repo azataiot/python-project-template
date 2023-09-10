@@ -39,12 +39,26 @@ ensure-dev-branch:
 
 
 # -- Dependency --
+
+## Install dependencies
+install: ensure-poetry
+	poetry install
+
+## Update dependencies
+showdeps: ensure-poetry
+	@echo "CURRENT:"
+	poetry show --tree
+	@echo
+	@echo "LATEST:"
+	poetry show --latest
+
 ## Export dependencies to requirements.txt
 requirements: ensure-poetry
 	@echo "Exporting dependencies to requirements.txt..."
 	@poetry export --only main -f requirements.txt --output requirements/requirements.txt --without-hashes
 	@poetry export --only dev -f requirements.txt --output requirements/dev-requirements.txt --without-hashes
 	@echo "Done!"
+
 
 
 

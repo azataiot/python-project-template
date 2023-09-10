@@ -35,6 +35,9 @@ jobs:
             ~/.cache/pre-commit
             ~/.cache/pip
           key: pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
+          restore-keys: |
+            pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
+            pre-commit-
 
       - name: Install pre-commit
         run: |
@@ -43,7 +46,8 @@ jobs:
           pre-commit --version
         shell: bash
 
-      - name: Install pre-commit hooks
+      - if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        name: Install pre-commit hooks
         run: pre-commit install
         shell: bash
 

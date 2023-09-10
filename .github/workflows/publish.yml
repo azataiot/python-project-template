@@ -1,0 +1,55 @@
+name: Publish to PyPI
+
+on:
+  workflow_run:
+    workflows: [ "Github Release" ] # replace with the name of your release.yml workflow
+    types:
+      - completed
+  workflow_dispatch:
+    if: github.actor != 'dependabot[bot]'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+
+      - name: Setup Cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: |
+            ~/.cache/pre-commit
+            ~/.cache/pip
+            .venv
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/**/.pre-commit-config.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}-${{ hashFiles('**/poetry.lock') }}-
+            ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}-
+            ${{ runner.os }}-poetry-
+
+      - name: Install Poetry and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry config virtualenvs.in-project true
+          poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          poetry install
+
+      - name: Build and publish
+        run: |
+          source .venv/bin/activate
+          poetry build
+          poetry publish
