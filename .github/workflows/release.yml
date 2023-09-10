@@ -22,9 +22,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get version from .VERSION file
+      - name: Get version from pyproject.toml
         id: get_version
-        run: echo "version=$(cat .VERSION)" >> $GITHUB_ENV
+        run: |
+          version=$(awk -F' = ' '/^version/ { gsub(/"/, "", $2); print $2 }' pyproject.toml)
+          echo "version=$version" >> $GITHUB_ENV
 
       - name: Create GitHub Release with auto-generated notes
         run: |
