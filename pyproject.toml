@@ -1,13 +1,29 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "python-project-template-poetry"
-version = "0.1.0.dev6"
+version = "0.1.0.dev8"
 description = "A project template to use for new Python Github repositories with best practices."
-authors = ["Azat <8280770+azataiot@users.noreply.github.com>"]
+authors = [ "Azat <8280770+azataiot@users.noreply.github.com>",]
 readme = "README.md"
-exclude = ["tests"]
+license = "MIT"
+homepage = "https://github.com/azataiot/python-project-template"
+exclude = [ "tests",]
 [[tool.poetry.packages]]
 include = "src"
 from = "."
+
+[tool.bandit]
+exclude_dirs = [ "tests", "path/to/file",]
+tests = [ "B201", "B301",]
+skips = [ "B101", "B601",]
+
+[tool.bump-version]
+dry-run = false
+commit = true
+tag = true
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -17,19 +33,4 @@ black = "^23.9.0"
 isort = "^5.12.0"
 pytest = "^7.4.2"
 flake8 = "^6.1.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-
-[tool.bandit]
-exclude_dirs = ["tests", "path/to/file"]
-tests = ["B201", "B301"]
-skips = ["B101", "B601"]
-
-[tool.bump-version]
-dry-run = false
-commit = true
-tag = true
+bump-version-pep440 = "^0.0.3.post1"
