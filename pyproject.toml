@@ -1,24 +1,24 @@
 [build-system]
-requires = ["poetry-core", ]
+requires = [ "poetry-core",]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "python-project-template-poetry"
-version = "0.1.0.dev7"
+version = "0.1.0.dev8"
 description = "A project template to use for new Python Github repositories with best practices."
-authors = ["Azat <8280770+azataiot@users.noreply.github.com>", ]
+authors = [ "Azat <8280770+azataiot@users.noreply.github.com>",]
 readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/azataiot/python-project-template"
-exclude = ["tests", ]
+exclude = [ "tests",]
 [[tool.poetry.packages]]
 include = "src"
 from = "."
 
 [tool.bandit]
-exclude_dirs = ["tests", "path/to/file", ]
-tests = ["B201", "B301", ]
-skips = ["B101", "B601", ]
+exclude_dirs = [ "tests", "path/to/file",]
+tests = [ "B201", "B301",]
+skips = [ "B101", "B601",]
 
 [tool.bump-version]
 dry-run = false
