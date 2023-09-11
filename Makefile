@@ -127,22 +127,23 @@ pr: ensure-clean
 		echo "Current branch is not a release or hotfix branch. Please switch to a release or hotfix branch before creating a PR to main."; \
 	fi
 
-## Set or bump the version
+## Set or bump the version using bv utility
 version:
-	@if [ ! -f .VERSION ]; then \
-		echo "0.0.1" > .VERSION; \
-		echo "No current version found. Created version 0.0.1"; \
+	@if [ ! -f pyproject.toml ]; then \
+		echo "Error: pyproject.toml file not found in the current directory."; \
+		exit 1; \
 	fi; \
-	echo "Current version: $$(cat .VERSION)"; \
-	read -p "Enter new version: " new_version; \
-	if [ "$$new_version" ]; then \
-		echo "$$new_version" > .VERSION; \
-		echo "Version set to $$new_version"; \
-		git add .VERSION; \
-		git commit -m "Bump version to $$new_version"; \
+	current_version=$$(poetry version -s); \
+	echo "Current version: $$current_version"; \
+	read -p "Enter new version type (major, minor, micro, a, b, rc, post, dev): " version_type; \
+	if [ "$$version_type" ]; then \
+		poetry run bv $$version_type; \
+		new_version=$$(poetry version -s); \
+		echo "Version bumped to: $$new_version"; \
 	else \
-		echo "No version input provided. Version remains unchanged."; \
+		echo "No version type provided. Version remains unchanged."; \
 	fi
+
 
 
 
