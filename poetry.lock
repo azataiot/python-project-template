@@ -48,13 +48,13 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "bump-version-pep440"
-version = "0.0.3.post1"
+version = "0.0.4.post1"
 description = "Version-bump your software with a single command"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "bump_version_pep440-0.0.3.post1-py3-none-any.whl", hash = "sha256:6a3f293d1a379da212070e18cebcbe2694247f1119f4285f69c51793a16a907a"},
-    {file = "bump_version_pep440-0.0.3.post1.tar.gz", hash = "sha256:47fff293e86d1c7e598e53e63a0518e833328b23ab63d02968580e44fd4dd88c"},
+    {file = "bump_version_pep440-0.0.4.post1-py3-none-any.whl", hash = "sha256:41a6e23c90b7f51ac1ae9a3302cd73f7757f4b34652f995c9bb4b0040af84f83"},
+    {file = "bump_version_pep440-0.0.4.post1.tar.gz", hash = "sha256:2645b4aef1eb2f3c7319492d45fcfe901609f04b27d432e1b42bf2da66126d33"},
 ]
 
 [package.dependencies]
@@ -401,4 +401,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "4e7f1012e9ed4d8649ecee415dbd28b59e091a4d9b0556edafdbbe8c19a48a48"
+content-hash = "f1a1ac88dc06deec45e60e6ff2ee3924086f6090cb837d90075111e10349dc28"
